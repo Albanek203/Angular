@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <div class="d-flex">
+    <span *ngIf="!authorizationService.isLoggedIn()">Vehicles</span>
+    <span class="email-text" [textContent]="authorizationService.getUserEmail()"></span>
+    <hr width="1" size="45" *ngIf="authorizationService.isLoggedIn()"/>
+    <div class="navigation" *ngIf="authorizationService.isLoggedIn()">
+      <button mat-stroked-button routerLink="/vehicles">
+        Vehicles
+      </button>
+    </div>
+  </div>
+  <div>
+    <button mat-raised-button *ngIf="!authorizationService.isLoggedIn()" routerLink="/login">
+      Login
+    </button>
+    <button mat-raised-button *ngIf="authorizationService.isLoggedIn()" (click)="authorizationService.logout()">
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
+
+<!--
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <mat-icon>menu</mat-icon>
+</button>
+<span class="example-spacer"></span>
+<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <mat-icon>favorite</mat-icon>
+</button>
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <mat-icon>share</mat-icon>
+</button>
+-->

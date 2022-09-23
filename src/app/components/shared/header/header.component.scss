@@ -1,0 +1,20 @@
+:host {
+  .mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  hr {
+    margin: 0 15px;
+    background-color: white;
+  }
+
+  .d-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .email-text {
+    font-size: 15px;
+  }
+}

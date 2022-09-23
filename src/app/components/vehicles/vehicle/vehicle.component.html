@@ -1,0 +1,47 @@
+<ng-container *ngIf="!loading">
+  <form #form="ngForm" class="mat-elevation-z22" [formGroup]="formGroup" (ngSubmit)="form.valid && saveVehicle()">
+    <h2 *ngIf="!isUpdateForm">Create vehicle</h2>
+    <h2 *ngIf="isUpdateForm">Update vehicle</h2>
+    <mat-form-field>
+      <mat-label>Manufacturer</mat-label>
+      <input matInput formControlName="manufacturer">
+      <mat-error *ngIf="formGroup.get('manufacturer') || form.submitted">
+        <span *ngIf="formGroup.get('manufacturer')?.errors?.['required']">Required field</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Model</mat-label>
+      <input matInput formControlName="model">
+      <mat-error *ngIf="formGroup.get('model') || form.submitted">
+        <span *ngIf="formGroup.get('model')?.errors?.['required']">Required field</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="type">
+      <mat-error *ngIf="formGroup.get('type') || form.submitted">
+        <span *ngIf="formGroup.get('type')?.errors?.['required']">Required field</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Color</mat-label>
+      <input matInput formControlName="color">
+      <mat-error *ngIf="formGroup.get('color') || form.submitted">
+        <span *ngIf="formGroup.get('color')?.errors?.['required']">Required field</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Year</mat-label>
+      <input matInput formControlName="year">
+      <mat-error *ngIf="formGroup.get('year') || form.submitted">
+        <span *ngIf="formGroup.get('year')?.errors?.['required']">Required field</span>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</ng-container>
+
+<div class="spinner-wrapper">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</div>

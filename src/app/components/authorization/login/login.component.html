@@ -1,0 +1,34 @@
+<ng-container *ngIf="!loading">
+  <form #loginForm="ngForm" class="mat-elevation-z22" (ngSubmit)="loginForm.valid && login()">
+    <h2>Login</h2>
+    <mat-form-field>
+      <input #email="ngModel"
+             matInput type="email" name="email" placeholder="Email"
+             [(ngModel)]="authorizeCredentials.email" email required>
+      <span matPrefix>
+      <mat-icon>mail</mat-icon>
+    </span>
+      <mat-error *ngIf="email.touched || loginForm.submitted">
+        <span *ngIf="email.errors?.['required']">Email required</span>
+        <span *ngIf="email.errors?.['email']">Email must be valid</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input #password="ngModel"
+             matInput type="password" name="password" placeholder="Password"
+             [(ngModel)]="authorizeCredentials.password" required>
+      <span matPrefix>
+      <mat-icon>lock</mat-icon>
+    </span>
+      <mat-error *ngIf="password.touched || loginForm.submitted">
+        <span *ngIf="password.errors?.['required']">Password required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Login</button>
+  </form>
+</ng-container>
+
+<div class="spinner-wrapper">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</div>
